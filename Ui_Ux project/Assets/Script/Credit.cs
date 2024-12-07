@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Credit : MonoBehaviour
 {
-    private async void OnEnable()
+    private void OnEnable()
     {
         
     }

@@ -11,6 +11,7 @@ public class SearchPlayer : MonoBehaviour
 
     public GameObject playerOwnProfile;
     public GameObject otherPlayerPanel;
+    public TextMeshProUGUI otherPlayerCodeText;
 
     public GameObject codeTooShort;
     public GameObject codeTooLong;
@@ -25,22 +26,21 @@ public class SearchPlayer : MonoBehaviour
     private void Start()
     {
         TMP_if = GetComponent<TMP_InputField>();
-        Debug.Log(IsPrimeNumber(testNumber));
     }
 
     public void OnEndEdit()
     {
-        if (TMP_if.text.Length < 9)
+        if (TMP_if.text.Length < 6)
         {
             codeTooShort.SetActive(true);
             TMP_if.text = string.Empty;
         }
-        else if (TMP_if.text.Length > 9)
+        else if (TMP_if.text.Length > 6)
         {
             codeTooLong.SetActive(true);
             TMP_if.text = string.Empty;
         }
-        else if (TMP_if.text == "619746581269")
+        else if (TMP_if.text == "619269")
         {
             playerOwnProfile.SetActive(true);
             TMP_if.text = string.Empty;
@@ -50,10 +50,10 @@ public class SearchPlayer : MonoBehaviour
         {
             userNotFound.SetActive(true);
             TMP_if.text = string.Empty;
-            realOptionPanel.SetActive(false);
         }
         else if (!IsPrimeNumber(int.Parse(TMP_if.text)))
         {
+            otherPlayerCodeText.text = TMP_if.text;
             otherPlayerPanel.SetActive(true);
             TMP_if.text = string.Empty;
             realOptionPanel.SetActive(false);
